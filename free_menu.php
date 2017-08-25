@@ -1,7 +1,7 @@
 <html>
 <head>
 	<style>
-	table tr{
+	table tr{  
 		cursor: pointer;
 	}
 	</style>
