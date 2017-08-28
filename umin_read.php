@@ -165,5 +165,6 @@ if($_SESSION['id'] == 'master' and $arr['sign'] == 1 )
   $sql = "UPDATE board SET hit = hit + 1 WHERE no = {$no}";
   $result = mysqli_query($conn,$sql);
 
+
   mysqli_close($conn);
  ?>
