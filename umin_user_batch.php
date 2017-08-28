@@ -11,6 +11,7 @@ $sql = "SELECT * from user where active = 1 and last_login <= '{$date}'";
 $result = mysqli_query($conn, $sql);
 $rows = mysqli_num_rows($result);
 $arr = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_free_result($result);
 echo "{$rows}개의 계정이 검색됐습니다.\n";
 
 
