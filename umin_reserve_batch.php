@@ -10,6 +10,7 @@ for(;;)
   $arr = mysqli_fetch_all($result, MYSQLI_ASSOC);
   mysqli_free_result($result);
   echo "{$rows}개의 예약글을 확인했습니다.\n";
+  
 
   for($i=0;$i<$rows;$i++)
   {

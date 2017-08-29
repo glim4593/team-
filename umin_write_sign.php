@@ -24,8 +24,8 @@ else
 	echo "<div>관리자님 반갑습니다.";
 }
 ?>
-  <input type='button'  onclick="location.href='/20170822/umin_write.php'" value='글쓰기'>
-  <input type='button' onclick="location.href='/20170822/free_logout.php'" value='로그아웃'>
+  <input type='button'  onclick="location.href='/board/team-/umin_write.php'" value='글쓰기'>
+  <input type='button' onclick="location.href='/board/team-/free_logout.php'" value='로그아웃'>
 	</div>
 </form>
 <?php
@@ -42,7 +42,7 @@ $arr = mysqli_fetch_assoc($result);
 if($rows)
 {
  ?>
- <form method='POST' action='umin_write_sign_proc.php'>
+ <form method='POST' action='/board/team-/umin_write_sign_proc.php'>
  <table border='1' width="100%">
    <input type='hidden' name='no' value='<?=$arr['no']?>'>
  <tr>
