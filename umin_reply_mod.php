@@ -21,8 +21,8 @@ else
 	echo "<div>관리자님 반갑습니다.";
 }
 ?>
-  <input type='button'  onclick="location.href='/20170822/umin_write.php'" value='글쓰기'>
-  <input type='button' onclick="location.href='/20170822/free_logout.php'" value='로그아웃'>
+  <input type='button'  onclick="location.href='/board/team-/umin_write.php'" value='글쓰기'>
+  <input type='button' onclick="location.href='/board/team-/free_logout.php'" value='로그아웃'>
 	</div>
 </form>
 <?php
@@ -34,7 +34,7 @@ $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
   $result = mysqli_query($conn, $sql);
   $arr = mysqli_fetch_assoc($result);
 ?>
-<form method="POST" action="/20170822/umin_reply_mod_proc.php">
+<form method="POST" action="/board/team-/umin_reply_mod_proc.php">
 <input type="hidden" value="<?=$no?>" name="no">
 <input type='hidden' value='<?=$board_no?>' name='board_no'>
 <table border="1" width="100%" style="font-weight:bold">

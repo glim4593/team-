@@ -27,8 +27,8 @@ else
 ?>
 
 
-  <input type='button'  onclick="location.href='/20170822/umin_write.php'" value='글쓰기'>
-  <input type='button' onclick="location.href='/20170822/free_logout.php'" value='로그아웃'>
+  <input type='button'  onclick="location.href='/board/team-/umin_write.php'" value='글쓰기'>
+  <input type='button' onclick="location.href='/board/team-/free_logout.php'" value='로그아웃'>
 	</div>
 </form>
 
@@ -47,14 +47,14 @@ else
 
 <br>
 <div style="text-align:center;">
-  <input type="button" style= "font-size:1em; height:29px;" value="목록" onclick="location.href='/20170822/free_menu.php?page=1'">
+  <input type="button" style= "font-size:1em; height:29px;" value="목록" onclick="location.href='/board/team-/free_menu.php?page=1'">
   <?php
 
   if($_SESSION['id'] == $arr['writer'] or $_SESSION['id'] == 'master')
   {
   ?>
-  <input type="button" style= "font-size:1em; height:29px;" value="수정" onclick="location.href='/20170822/umin_write_mod.php?no=<?=$no?>'">
-  <input type="button" style= "font-size:1em; height:29px;" value="삭제" onclick="location.href='/20170822/umin_write_del.php?no=<?=$no?>'">
+  <input type="button" style= "font-size:1em; height:29px;" value="수정" onclick="location.href='/board/team-/umin_write_mod.php?no=<?=$no?>'">
+  <input type="button" style= "font-size:1em; height:29px;" value="삭제" onclick="location.href='/board/team-/umin_write_del.php?no=<?=$no?>'">
 </div>
 
 <?php
@@ -62,7 +62,7 @@ else
 else if($arr['writer'] != 'master')
 {
   ?>
-  <input type="button" style= "font-size:1em; height:29px;" value="신고" onclick="location.href='/20170822/umin_write_sign.php?no=<?=$no?>'">
+  <input type="button" style= "font-size:1em; height:29px;" value="신고" onclick="location.href='/board/team-/umin_write_sign.php?no=<?=$no?>'">
   <?php
 }
 echo "<br>";
@@ -137,14 +137,14 @@ if($_SESSION['id'] == 'master' and $arr['sign'] == 1 )
     {
 
     ?>
-    <input type='submit' formaction="/20170822/umin_reply_mod.php"  value="댓글수정">
-    <input type='submit' formaction="/20170822/umin_reply_del.php"  value="댓글삭제">
+    <input type='submit' formaction="/board/team-/umin_reply_mod.php"  value="댓글수정">
+    <input type='submit' formaction="/board/team-/umin_reply_del.php"  value="댓글삭제">
     <?php
     }
     else
     {
       ?>
-     <input type='submit' formaction="/20170822/umin_reply_sign.php" value="신고">
+     <input type='submit' formaction="/board/team-/umin_reply_sign.php" value="신고">
      <?php
     }
 

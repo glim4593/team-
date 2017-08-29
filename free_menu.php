@@ -25,7 +25,7 @@ session_start();
 	if(!isset($_SESSION['host']))
 	{
 ?>
-		<form method="POST" action="/20170822/umin_index_login.php">
+		<form method="POST" action="/board/team-/umin_index_login.php">
 			<center>
 				<table border="1">
 					<tr>
@@ -43,7 +43,7 @@ session_start();
 					<tr>
 						<td colspan="2" style="text-align:center;">
 							<input type="submit" value="로그인">
-							<input type="button" onclick="location.href='/20170822/umin_index2.php'" value="회원가입">
+							<input type="button" onclick="location.href='/board/team-/umin_index2.php'" value="회원가입">
 						</td>
 					</tr>
 				</table>
@@ -77,8 +77,8 @@ else
 	echo "<div>관리자님 반갑습니다.";
 }
 ?>
-  <input type='button'  onclick="location.href='/20170822/umin_write.php'" value='글쓰기'>
-  <input type='button' onclick="location.href='/20170822/free_logout.php'" value='로그아웃'>
+  <input type='button'  onclick="location.href='/board/team-/umin_write.php'" value='글쓰기'>
+  <input type='button' onclick="location.href='/board/team-/free_logout.php'" value='로그아웃'>
 	</div>
 </form>
 
@@ -140,7 +140,7 @@ if($rows)
 				if($_SESSION['id'] == 'master' and $arr[$i]['sign'] == 1)
 			{
 
-				echo "<tr onclick=\"location.href='/20170822/umin_read.php?no={$arr[$i]['no']}'\">";
+				echo "<tr onclick=\"location.href='/board/team-/umin_read.php?no={$arr[$i]['no']}'\">";
 
     		echo "<td align='center' style='color:red'; width:'10%'>{$arr[$i]['no']}</td>";
 				if($date<$arr[$i]['date'])
@@ -162,7 +162,7 @@ if($rows)
   		}
 			else
 			{
-				echo "<tr onclick=\"location.href='/20170822/umin_read.php?no={$arr[$i]['no']}'\">";
+				echo "<tr onclick=\"location.href='/board/team-/umin_read.php?no={$arr[$i]['no']}'\">";
 
  			 	echo "<td align='center' width='10%'>{$arr[$i]['no']}</td>";
  			 	if($date<$arr[$i]['date'])
@@ -189,7 +189,7 @@ if($rows)
 </table>
 
 <div align="center">
-<form method='POST' action='/20170822/free_menu.php?page=1'>
+<form method='POST' action='/board/team-/free_menu.php?page=1'>
 
 <?php
 if(isset($_GET['page']))
@@ -212,7 +212,7 @@ $page_num = ceil($rows/$page_per);
 
 for($i = 1; $i <= $page_num ; $i++)
 {
-  echo "<a href='/20170822/free_menu.php?page={$i}'>{$i}</a>";
+  echo "<a href='/board/team-/free_menu.php?page={$i}'>{$i}</a>";
 }
  ?>
 <br>
@@ -227,7 +227,7 @@ for($i = 1; $i <= $page_num ; $i++)
 
 
 
-<input type='button' onclick="location.href='/20170822/umin_write.php'" value='글쓰기'>
+<input type='button' onclick="location.href='/board/team-/umin_write.php'" value='글쓰기'>
 </form>
   </div>
 <?php

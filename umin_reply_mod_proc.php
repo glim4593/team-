@@ -13,7 +13,7 @@ $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
   {//입력이 안되었으면
     //echo "입력 된 값이 없어요";
     echo "<script>alert('내용이 입력되지 않았습니다.');
-          location.href='/20170822/umin_read.php?no={$board_no}';
+          location.href='/board/team-/umin_read.php?no={$board_no}';
           </script>";
     mysqli_close($conn);
     exit;
@@ -32,7 +32,7 @@ $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
   {
 
     echo "<script>alert('댓글이 수정되었습니다.');
-          location.href='/20170822/umin_read.php?no={$board_no}';
+          location.href='/board/team-/umin_read.php?no={$board_no}';
           </script>";
           mysqli_close($conn);
 
@@ -41,7 +41,7 @@ $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
   {
 
     echo "<script>alert('댓글 수정에 실패 했습니다.');
-          location.href='/20170822/umin_read.php?no={$board_no}';
+          location.href='/board/team-/umin_read.php?no={$board_no}';
           </script>";
       mysqli_close($conn);
     }

@@ -14,7 +14,7 @@
 ?>
 	<center>
 		<table border="1">
-			<form method="POST" action="/20170822/umin_index2.php">
+			<form method="POST" action="/board/team-/umin_index2.php">
 				<tr>
 				<td>ID</td>
 				<td>
@@ -63,7 +63,7 @@
 		{
 			echo "<script>
 					alert('ID 중복체크 확인을 하세요');
-					location.href='/20170822/umin_index2.php';
+					location.href='/board/team-/umin_index2.php';
 					</script>";
 			exit;
 		}
@@ -85,7 +85,7 @@
 		  mysqli_close($conn);
 			echo "<script>
 						alert('회원정보가 부족합니다..');
-						location.href='/20170822/umin_index2.php';
+						location.href='/board/team-/umin_index2.php';
 						</script>";
 		}
 		else
@@ -100,16 +100,16 @@
 			  mysqli_close($conn);
 				echo "<script>
 						alert('회원 가입이 되었습니다.');
-						location.href='/20170822/free_menu.php?page=1';
+						location.href='/board/team-/free_menu.php?page=1';
 						</script>";
 			}
 			else
 			{
-				
+
 			  mysqli_close($conn);
 				echo "<script>
 						alert('회원 가입에 실패했습니다.');
-						location.href='/20170822/umin_index2.php';
+						location.href='/board/team-/umin_index2.php';
 						</script>";
 
 			}
@@ -152,7 +152,7 @@
     id = $("input[name='id']").val();
     $.ajax({
       type: "POST",
-      url: "/20170822/umin_id_check.php",
+      url: "/board/team-/umin_id_check.php",
       data: {id:id},
       success: call_func
     });

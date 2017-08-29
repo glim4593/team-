@@ -4,7 +4,7 @@ if($_POST['sign'] == '' or $_POST['subject'] == '')
 {
   echo "<script>
         alert('신고사유를 작성하지 않았습니다.');
-        location.href='/20170822/umin_write_sign.php?no={$_POST['no']}';
+        location.href='/board/team-/umin_write_sign.php?no={$_POST['no']}';
         </script>";
         exit;
 }
@@ -26,14 +26,14 @@ if($result)
 {
   echo "<script>
         alert('신고를 완료했습니다.');
-        location.href='/20170822/umin_read.php?no={$_POST['no']}';
+        location.href='/board/team-/umin_read.php?no={$_POST['no']}';
         </script>";
 }
 else
 {
   echo "<script>
         alert('신고를 실패했습니다.');
-        location.href='/20170822/umin_write_sign.php?no={$_POST['no']}';
+        location.href='/board/team-/umin_write_sign.php?no={$_POST['no']}';
         </script>";
 
 }

@@ -24,21 +24,23 @@ else
 }
 ?>
 
-  <input type='button' onclick="location.href='/20170822/free_logout.php'" value='로그아웃'>
+  <input type='button' onclick="location.href='/board/team-/free_logout.php'" value='로그아웃'>
 	</div>
 </form>
 
 
 
-<form id='form' method="POST" enctype="multipart/form-data" action="/20170822/umin_write_proc.php">
+<form id='form' method="POST" enctype="multipart/form-data" action="/board/team-/umin_write_proc.php">
 <table border="0">
   <tr>
     <th>작성자</th><td><input type="text" name="writer" value='<?=$_SESSION['id']?>' readonly></td>
   </tr>
   <tr>
+		<!--
     <th>구분</th><td>잡담<input type="radio" name="cate" value='0' checked="checked">
                      유머<input type="radio" name="cate" value='1'>
                      게임<input type="radio" name="cate" value='2'></td>
+									 -->
   </tr>
   <tr>
     <th>제목</th><td><input type="text" name="subject" size="70"></td>

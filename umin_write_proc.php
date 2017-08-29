@@ -32,7 +32,7 @@ if(isset($_POST['check']))
            //mysqli_close($conn);
 
            echo "<script>alert('글이 작성되었습니다.');
-                 location.href='/20170822/free_menu.php?page=1';
+                 location.href='/board/team-/free_menu.php?page=1';
                  </script>";
 
                  mysqli_close($conn);
@@ -55,7 +55,7 @@ if(isset($_POST['check']))
 
 
        echo "<script>alert('글이 작성되었습니다.');
-             location.href='/20170822/free_menu.php';
+             location.href='/board/team-/free_menu.php';
              </script>";
 
              mysqli_close($conn);
@@ -108,7 +108,7 @@ exit;
   $subject = mysqli_real_escape_string($conn,$_POST['subject']);
   $content = mysqli_real_escape_string($conn,$_POST['content']);
   $upload = mysqli_real_escape_string($conn, $_FILES['ff']['name']);
-  $cate = $_POST['cate'];
+  //$cate = $_POST['cate'];
 
   for($i=0;$i<$count;$i++)
   {
@@ -116,7 +116,7 @@ exit;
     $content = str_replace($alert[$i], "OO", $content);
   }
 
-  $sql = "INSERT INTO board(writer,subject,content, upload, cate) values('{$writer}','{$subject}','{$content}', '{$upload}', {$cate})";
+  $sql = "INSERT INTO board(writer,subject,content, upload) values('{$writer}','{$subject}','{$content}', '{$upload}'";
   $result = mysqli_query($conn,$sql);
   //print_r($sql);
   //exit;
@@ -129,15 +129,13 @@ exit;
       $upfile = $updir . $_FILES['ff']['name'];
       if(move_uploaded_file($tmpfile, $upfile))
       {
-        for($i=0; $i<= $cate ;$i++)
-        //mysqli_close($conn);
-        {
+
         echo "<script>alert('글이 작성되었습니다.[파일첨부]');
-              location.href='/20170822/free_menu.php?cate={$cate}&page=1';
+              location.href='/board/team-/free_menu.php?page=1';
               </script>";
 
               mysqli_close($conn);
-        }
+
 
         //echo "글이 작성되었습니다.";
       }
@@ -153,15 +151,18 @@ exit;
       //  echo "파일첨부에 실패했습니다.";
 
       }
+
     //mysqli_close($conn);
-  for ($i=0; $i <= $cate ; $i++)
-      {
+
+//  for ($i=0; $i <= $cate ; $i++)
+
     echo "<script>alert('글이 작성되었습니다.');
-          location.href='/20170822/free_menu.php?cate={$cate}&page=1';
+          location.href='/board/team-/free_menu.php?page=1';
           </script>";
 
           mysqli_close($conn);
-      }
+
+
 
   //  echo "글이 작성되었습니다.";
 }

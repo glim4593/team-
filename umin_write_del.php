@@ -9,9 +9,9 @@
   if($result)
   {
     echo "<script>alert('글 삭제에 성공 하였습니다.');
-          location.href='/20170822/free_menu.php?page=1';
+          location.href='/board/team-/free_menu.php?page=1';
           </script>";
-      
+
           mysqli_close($conn);
   }
   else
