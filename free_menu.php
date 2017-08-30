@@ -115,9 +115,9 @@ else
 
 }
 
-$rows = mysqli_num_rows($result);
-$arr = mysqli_fetch_all($result, MYSQLI_ASSOC);
-mysqli_free_result($result);
+$rows = @mysqli_num_rows($result);
+$arr = @mysqli_fetch_all($result, MYSQLI_ASSOC);
+@mysqli_free_result($result);
 
 ?>
 
@@ -182,6 +182,13 @@ if($rows)
  		 	echo "</tr>";
 			}
 		}
+}
+else
+{
+	echo "<tr align='center'>
+				<td colspan='5'>데이터를 가져오지 못했습니다.</td>
+				<tr>
+				";
 }
 
 
