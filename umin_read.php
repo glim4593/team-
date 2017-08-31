@@ -1,5 +1,10 @@
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+$conn = mysqli_connect('127.0.0.1', 'root', '123', 'umin');
+if(!$conn)
+{
+	echo "DB접속에 실패 하였습니다.";
+	exit;
+}
 session_start();
 $no = $_GET['no'];
 $sql = "SELECT * FROM board WHERE no = {$no}";
