@@ -116,10 +116,11 @@ exit;
     $content = str_replace($alert[$i], "OO", $content);
   }
 
-  $sql = "INSERT INTO board(writer,subject,content, upload) values('{$writer}','{$subject}','{$content}', '{$upload}'";
+  $sql = "INSERT INTO board(writer,subject,content, upload) values('{$writer}','{$subject}','{$content}', '{$upload}')";
   $result = mysqli_query($conn,$sql);
   //print_r($sql);
-  //exit;
+  //exit;  
+
   if($result)//INSERT 성공 = 1
   {
     if(is_uploaded_file($_FILES['ff']['tmp_name']))
