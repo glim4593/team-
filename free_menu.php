@@ -109,7 +109,7 @@ $result = mysqli_query($conn, $sql);
 }
 else
 {
-  $sql = "SELECT * from boar ORDER BY no desc
+  $sql = "SELECT * from board ORDER BY no desc
    limit {$page}, {$page_per} ";
   $result = mysqli_query($conn, $sql);
 
@@ -180,6 +180,8 @@ if($rows)
  		 	echo "<td align='center' width='20%'>{$arr[$i]['date']}</td>";
  		 	echo "<td align='center' width='10%'>{$arr[$i]['hit']}</td>";
  		 	echo "</tr>";
+
+
 			}
 		}
 }
@@ -188,17 +190,44 @@ else
 	echo "<tr align='center'>
 				<td colspan='5'>데이터가 없거나, 데이터를 찾을 수 없습니다. </td>
 				<tr>
-				";
+				</table>";
+?>
+<div align="center">
+<form method='POST' action='/board/team-/free_menu.php?page=1'>
+	<br>
+	  <!--나중에 button으로 바꿀 수도 있으니 참고 -->
+	  <select name='search'>
+	  <option value='subject'>제목</option>
+	  <option value='writer'>작성자</option>
+	  <option value='content'>내용</option>
+	  </select>
+	  <input type='text' name='search_text'>
+	  <input type='submit' value='검색'>
+
+
+
+	<input type='button' onclick="location.href='/board/team-/umin_write.php'" value='글쓰기'>
+	</form>
+	  </div>
+	<?php
+	mysqli_close($conn);
+	?>
+	</body>
+	</html>
+<?php
+
+exit;
 }
 
 
 ?>
-</table>
 
+</table>
 <div align="center">
 <form method='POST' action='/board/team-/free_menu.php?page=1'>
 
 <?php
+
 if(isset($_GET['page']))
 {
 	if(isset($search))
@@ -246,6 +275,9 @@ for($i = 1; $i <= $page_num ; $i++)
 
 
 mysqli_close($conn);
+
+
 ?>
+
 </body>
 </html>
