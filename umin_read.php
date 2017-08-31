@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root', '123', 'umin');
+$conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
 if(!$conn)
 {
 	echo "DB접속에 실패 하였습니다.";
@@ -9,14 +9,21 @@ session_start();
 $no = $_GET['no'];
 $sql = "SELECT * FROM board WHERE no = {$no}";
 $result = mysqli_query($conn,$sql);
+if(!$result)
+{
+	echo "<script>alert('테이블에 데이터가 존재 하지 않습니다');
+	      location.href='javascript:history.back()';
+				</script>";
+				exit;
+}
 $arr = mysqli_fetch_assoc($result);
 mysqli_free_result($result);
 ?>
 <form method='POST' action='' align='right'>
 	<!--
-	<a href="/20170822/free_menu.php?cate=0page=1">잡담</a>
-	<a href="/20170822/free_menu.php?cate=1page=1">유머</a>
-	<a href="/20170822/free_menu.php?cate=2page=1">게임</a>
+	<a href="/board/team-/free_menu.php?cate=0page=1">잡담</a>
+	<a href="/board/team-/free_menu.php?cate=1page=1">유머</a>
+	<a href="/board/team-/free_menu.php?cate=2page=1">게임</a>
 -->
 <?php
 if($_SESSION['id'] != 'master')
@@ -32,8 +39,8 @@ else
 ?>
 
 
-  <input type='button'  onclick="location.href='/20170822/umin_write.php'" value='글쓰기'>
-  <input type='button' onclick="location.href='/20170822/free_logout.php'" value='로그아웃'>
+  <input type='button'  onclick="location.href='/board/team-/umin_write.php'" value='글쓰기'>
+  <input type='button' onclick="location.href='/board/team-/free_logout.php'" value='로그아웃'>
 	</div>
 </form>
 
@@ -52,14 +59,14 @@ else
 
 <br>
 <div style="text-align:center;">
-  <input type="button" style= "font-size:1em; height:29px;" value="목록" onclick="location.href='/20170822/free_menu.php?page=1'">
+  <input type="button" style= "font-size:1em; height:29px;" value="목록" onclick="location.href='/board/team-/free_menu.php?page=1'">
   <?php
 
   if($_SESSION['id'] == $arr['writer'] or $_SESSION['id'] == 'master')
   {
   ?>
-  <input type="button" style= "font-size:1em; height:29px;" value="수정" onclick="location.href='/20170822/umin_write_mod.php?no=<?=$no?>'">
-  <input type="button" style= "font-size:1em; height:29px;" value="삭제" onclick="location.href='/20170822/umin_write_del.php?no=<?=$no?>'">
+  <input type="button" style= "font-size:1em; height:29px;" value="수정" onclick="location.href='/board/team-/umin_write_mod.php?no=<?=$no?>'">
+  <input type="button" style= "font-size:1em; height:29px;" value="삭제" onclick="location.href='/board/team-/umin_write_del.php?no=<?=$no?>'">
 </div>
 
 <?php
@@ -67,7 +74,7 @@ else
 else if($arr['writer'] != 'master')
 {
   ?>
-  <input type="button" style= "font-size:1em; height:29px;" value="신고" onclick="location.href='/20170822/umin_write_sign.php?no=<?=$no?>'">
+  <input type="button" style= "font-size:1em; height:29px;" value="신고" onclick="location.href='/board/team-/umin_write_sign.php?no=<?=$no?>'">
   <?php
 }
 echo "<br>";
@@ -104,7 +111,7 @@ if($_SESSION['id'] == 'master' and $arr['sign'] == 1 )
 
 <br>
 <table border="1" width="100%" style="font-weight:bold">
-  <form method="POST" action="/20170822/umin_reply_proc.php">
+  <form method="POST" action="/board/team-/umin_reply_proc.php">
   <tr>
     <input type="hidden" name="no" value="<?=$no?>">
     <td><font size="4">작성자</font><input type="text" name="writer" size="9" value="<?=$_SESSION['id']?>"></td>
@@ -142,21 +149,21 @@ if($_SESSION['id'] == 'master' and $arr['sign'] == 1 )
     {
 
     ?>
-    <input type='submit' formaction="/20170822/umin_reply_mod.php"  value="댓글수정">
-    <input type='submit' formaction="/20170822/umin_reply_del.php"  value="댓글삭제">
+    <input type='submit' formaction="/board/team-/umin_reply_mod.php"  value="댓글수정">
+    <input type='submit' formaction="/board/team-/umin_reply_del.php"  value="댓글삭제">
     <?php
     }
     else
     {
       ?>
-     <input type='submit' formaction="/20170822/umin_reply_sign.php" value="신고">
+     <input type='submit' formaction="/board/team-/umin_reply_sign.php" value="신고">
      <?php
     }
 
     ?>
     <!--
-      <input type="button" value="댓글수정" onclick="location.href='/20170822/umin_reply_mod.php?no=<$arr[$i]['no']?>'">
-    <input type="button" value="댓글삭제" onclick="location.href='/20170822/umin_reply_del.php?no=<$arr[$i]['no']?>'"></th>
+      <input type="button" value="댓글수정" onclick="location.href='/board/team-/umin_reply_mod.php?no=<$arr[$i]['no']?>'">
+    <input type="button" value="댓글삭제" onclick="location.href='/board/team-/umin_reply_del.php?no=<$arr[$i]['no']?>'"></th>
   -->
   <tr><td><?=$arr[$i]['writer']?></td><td><?=$arr[$i]['content']?></td><td><?=$arr[$i]['date']?></td></tr>
 
