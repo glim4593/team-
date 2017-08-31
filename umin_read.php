@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root', '123', 'umin');
+$conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
 if(!$conn)
 {
 	echo "DB접속에 실패 하였습니다.";
@@ -104,7 +104,7 @@ if($_SESSION['id'] == 'master' and $arr['sign'] == 1 )
 
 <br>
 <table border="1" width="100%" style="font-weight:bold">
-  <form method="POST" action="/20170822/umin_reply_proc.php">
+  <form method="POST" action="/board/team-/umin_reply_proc.php">
   <tr>
     <input type="hidden" name="no" value="<?=$no?>">
     <td><font size="4">작성자</font><input type="text" name="writer" size="9" value="<?=$_SESSION['id']?>"></td>
