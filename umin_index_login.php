@@ -72,5 +72,5 @@
         mysqli_close($conn);
 		exit;
 	}
-
+/*주석 추가*/
 ?>
