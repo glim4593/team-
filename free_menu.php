@@ -109,7 +109,7 @@ $result = mysqli_query($conn, $sql);
 }
 else
 {
-  $sql = "SELECT * from board ORDER BY no desc
+  $sql = "SELECT * from boar ORDER BY no desc
    limit {$page}, {$page_per} ";
   $result = mysqli_query($conn, $sql);
 
@@ -186,7 +186,7 @@ if($rows)
 else
 {
 	echo "<tr align='center'>
-				<td colspan='5'>데이터를 가져오지 못했습니다.</td>
+				<td colspan='5'>데이터가 없거나, 데이터를 찾을 수 없습니다. </td>
 				<tr>
 				";
 }
