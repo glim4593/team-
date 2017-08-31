@@ -9,14 +9,21 @@ session_start();
 $no = $_GET['no'];
 $sql = "SELECT * FROM board WHERE no = {$no}";
 $result = mysqli_query($conn,$sql);
+if(!$result)
+{
+	echo "<script>alert('테이블에 데이터가 존재 하지 않습니다');
+	      location.href='javascript:history.back()';
+				</script>";
+				exit;
+}
 $arr = mysqli_fetch_assoc($result);
 mysqli_free_result($result);
 ?>
 <form method='POST' action='' align='right'>
 	<!--
-	<a href="/20170822/free_menu.php?cate=0page=1">잡담</a>
-	<a href="/20170822/free_menu.php?cate=1page=1">유머</a>
-	<a href="/20170822/free_menu.php?cate=2page=1">게임</a>
+	<a href="/board/team-/free_menu.php?cate=0page=1">잡담</a>
+	<a href="/board/team-/free_menu.php?cate=1page=1">유머</a>
+	<a href="/board/team-/free_menu.php?cate=2page=1">게임</a>
 -->
 <?php
 if($_SESSION['id'] != 'master')
@@ -155,8 +162,8 @@ if($_SESSION['id'] == 'master' and $arr['sign'] == 1 )
 
     ?>
     <!--
-      <input type="button" value="댓글수정" onclick="location.href='/20170822/umin_reply_mod.php?no=<$arr[$i]['no']?>'">
-    <input type="button" value="댓글삭제" onclick="location.href='/20170822/umin_reply_del.php?no=<$arr[$i]['no']?>'"></th>
+      <input type="button" value="댓글수정" onclick="location.href='/board/team-/umin_reply_mod.php?no=<$arr[$i]['no']?>'">
+    <input type="button" value="댓글삭제" onclick="location.href='/board/team-/umin_reply_del.php?no=<$arr[$i]['no']?>'"></th>
   -->
   <tr><td><?=$arr[$i]['writer']?></td><td><?=$arr[$i]['content']?></td><td><?=$arr[$i]['date']?></td></tr>
 
