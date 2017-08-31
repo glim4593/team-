@@ -132,17 +132,19 @@
       data = "사용중인 ID 입니다.";
       color = "red";
     }
-    else
+    else if(data == 0)
     {
-		if(data == 0)
-		{
 			$("input[name='id_confirm']").val(1);
 
 			data = "사용가능한 ID 입니다.";
-			color = "blue";
-		}
+			color = "blue";		
 
     }
+	else
+	{
+		data = "id 중복 검사에 실패 하였습니다."
+		color = "red";
+	}
 		$(".id_checking").text(data);
 		$(".id_checking").css({"color":color});
   };
