@@ -41,7 +41,7 @@
 				</tr>
 				<tr>
 					<td>
-					<input type="submit" value="회원가입">
+					<input type="submit" name="check_submit" value="회원가입">
 					</td>
 				</tr>
 			</form>
@@ -161,6 +161,36 @@
   };
 
   $("input[name='id_check']").click(ajax_func);
+  
+  function func()
+  {
+    id = $("input[name='id']").val();
+    pass = $("input[name='pass']").val();
+    email = $("input[name='email']").val();
+
+    id_check = /[^a-z0-9]/i;
+    pass_check = /^[a-z0-9\!_\-\.]{8,}$/i;
+    email_check = /^[a-z0-9_\-\.]+[@][a-z0-9_\-\.]+[\.][a-z]{2,3}$/i;
+
+    if(id.match(id_check))
+    {
+      alert("ID에는 특수문자를 입력할 수 없습니다.");
+      return false;
+    }
+    if(!pass.match(pass_check))
+    {
+      alert("PASSWORD는 8자 이상 입력해야 하며\n문자/숫자/!,-,. 만 입력 가능합니다.");
+      return false;
+    }
+    if(!email.match(email_check))
+    {
+      alert("이메일 형식과 일치하지 않습니다.");
+      return false;
+    }
+  }
+
+  $("input[name='check_submit']").click(func);
+
 
 </script>
 
