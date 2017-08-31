@@ -15,7 +15,7 @@
 
 	$id = mysqli_real_escape_string($conn, $_POST['id']);
 
-	  $sql = "select id from user where id = '{$id}'";
+	  $sql = "select id from use where id = '{$id}'";
 	  $result = mysqli_query($conn, $sql);
 	  $rows = mysqli_num_rows($result);
 
