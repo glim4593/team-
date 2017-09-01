@@ -1,11 +1,19 @@
 <?php
+session_start();
 $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
 if(!$conn)
 {
 	echo "DB접속에 실패 하였습니다.";
 	exit;
 }
-session_start();
+if(!isset($_SESSION['host']))
+{
+	echo "<script>
+			alert('접근 권한이 없습니다.');
+			location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+}
 $no = $_GET['no'];
 $sql = "SELECT * FROM board WHERE no = {$no}";
 $result = mysqli_query($conn,$sql);
@@ -173,10 +181,7 @@ if($_SESSION['id'] == 'master' and $arr['sign'] == 1 )
 ?>
 </table>
 <?php
-if($rows == 0)
-{
-	echo "<div style = 'font-size:20'>댓글이 없습니다.</div>";
-}
+
   $sql = "UPDATE board SET hit = hit + 1 WHERE no = {$no}";
   $result = mysqli_query($conn,$sql);
 
