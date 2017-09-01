@@ -16,9 +16,19 @@
 
 
 	$conn = mysqli_connect($host, $id, $password, $db);
-
-	$id = $_GET['id'];
-
+	
+	if(!isset($_SESSION['id']))
+	{
+		echo "<script>
+			alert('접근 권한이 없습니다.');
+			location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+		
+	}
+	else
+	{
+		$id = $_SESSION['id'];	
 ?>
 
 	<center>
@@ -44,6 +54,9 @@
 			</table>
 		</form>
 	</center>
-
+	
+<?php
+	}
+?>
 </body>
 </html>
