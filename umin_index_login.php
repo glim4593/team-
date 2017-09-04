@@ -66,9 +66,10 @@
 			}
 			else
 			{
+				$_SESSION['id'] = $arr['id'];
 				echo "<script>
 					alert('휴면 계정입니다 계정 활성화를 하세요');
-					location.href='/board/team-/umin_active.php?id={$id}';
+					location.href='/board/team-/umin_active.php';
 					</script>"; // 데이터 GET방식으로 id값 전달
 
 				mysqli_close($conn);
