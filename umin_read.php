@@ -181,7 +181,10 @@ if($_SESSION['id'] == 'master' and $arr['sign'] == 1 )
 ?>
 </table>
 <?php
-
+if($rows == 0)
+{
+	echo "<div style = 'font-size:20'>댓글이 없습니다.</div>";
+}
   $sql = "UPDATE board SET hit = hit + 1 WHERE no = {$no}";
   $result = mysqli_query($conn,$sql);
 
