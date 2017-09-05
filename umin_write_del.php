@@ -1,7 +1,23 @@
 <?php
  session_start();
 
-  $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+  if(!isset($_SESSION['id']))
+  {
+    echo "<script>
+          alert('접근 권한이 없습니다.')
+          location.href='javascript:history.back()';
+          </script>";
+          exit;
+  }
+  $conn = @mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+  if(!$conn)
+  {
+    echo "<script>
+          alert('데이터베이스 접속에 실패했습니다.')
+          location.href='javascript:history.back()';
+          </script>";
+          exit;
+  }
   $no = $_GET['no'];
   $sql = "SELECT * from board where no = {$no}";
   $result = mysqli_query($conn, $sql);
