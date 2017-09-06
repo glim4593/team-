@@ -24,8 +24,8 @@ else
 	echo "<div>관리자님 반갑습니다.";
 }
 ?>
-  <input type='button'  onclick="location.href='/20170822/umin_write.php'" value='글쓰기'>
-  <input type='button' onclick="location.href='/20170822/free_logout.php'" value='로그아웃'>
+  <input type='button'  onclick="location.href='/board/team-/umin_write.php'" value='글쓰기'>
+  <input type='button' onclick="location.href='/board/team-/free_logout.php'" value='로그아웃'>
 	</div>
 </form>
 <?php

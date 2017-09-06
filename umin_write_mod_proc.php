@@ -31,7 +31,7 @@ $result = mysqli_query($conn,$sql);
       if(move_uploaded_file($tmpfile, $upfile))
       {
         echo "<script>alert('글 수정에 성공했습니다.');
-              location.href='/20170822/umin_read.php?no={$no}';
+              location.href='/board/team-/umin_read.php?no={$no}';
               </script>";
 
               mysqli_close($conn);
@@ -47,7 +47,7 @@ $result = mysqli_query($conn,$sql);
     }
 
     echo "<script>alert('글 수정에 성공했습니다.');
-          location.href='/20170822/umin_read.php?no={$no}';
+          location.href='/board/team-/umin_read.php?no={$no}';
           </script>";
 
           mysqli_close($conn);
@@ -58,7 +58,7 @@ $result = mysqli_query($conn,$sql);
     echo "<script>alert('글 수정에 실패했습니다.');
           location.href='javascript:history.back()';
           </script>";
-          
+
           mysqli_close($conn);
   }
  ?>

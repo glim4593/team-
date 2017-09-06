@@ -32,7 +32,7 @@ if(isset($_POST['check']))
            //mysqli_close($conn);
 
            echo "<script>alert('글이 작성되었습니다.');
-                 location.href='/20170822/free_menu.php?page=1';
+                 location.href='/board/team-/free_menu.php?page=1';
                  </script>";
 
                  mysqli_close($conn);
@@ -55,7 +55,7 @@ if(isset($_POST['check']))
 
 
        echo "<script>alert('글이 작성되었습니다.');
-             location.href='/20170822/free_menu.php';
+             location.href='/board/team-/free_menu.php';
              </script>";
 
              mysqli_close($conn);
@@ -133,7 +133,7 @@ exit;
         //mysqli_close($conn);
         {
         echo "<script>alert('글이 작성되었습니다.[파일첨부]');
-              location.href='/20170822/free_menu.php?cate={$cate}&page=1';
+              location.href='/board/team-/free_menu.php?cate={$cate}&page=1';
               </script>";
 
               mysqli_close($conn);
@@ -157,7 +157,7 @@ exit;
   for ($i=0; $i <= $cate ; $i++)
       {
     echo "<script>alert('글이 작성되었습니다.');
-          location.href='/20170822/free_menu.php?cate={$cate}&page=1';
+          location.href='/board/team-/free_menu.php?cate={$cate}&page=1';
           </script>";
 
           mysqli_close($conn);

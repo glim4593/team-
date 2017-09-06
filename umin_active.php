@@ -22,7 +22,7 @@
 ?>
 
 	<center>
-		<form method="POST" action="/20170822/umin_active2.php">
+		<form method="POST" action="/board/team-/umin_active2.php">
 			<table border="1">
 				<tr>
 					<td>ID</td>

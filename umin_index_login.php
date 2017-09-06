@@ -46,7 +46,7 @@
 
 			echo "<script>
 					alert('로그인 되었습니다.');
-					location.href='/20170822/free_menu.php?page=1';
+					location.href='/board/team-/free_menu.php?page=1';
 					</script>";
 
           mysqli_close($conn);
@@ -56,7 +56,7 @@
 		{
 			echo "<script>
 				alert('휴면 계정입니다 계정 활성화를 하세요');
-				location.href='/20170822/umin_active.php?id={$id}';
+				location.href='/board/team-/umin_active.php?id={$id}';
 				</script>"; // 데이터 GET방식으로 id값 전달
 
         mysqli_close($conn);

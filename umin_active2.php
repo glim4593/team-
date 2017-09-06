@@ -41,7 +41,7 @@
 
 		echo "<script>
 				alert('계정이 활성화 되었습니다');
-				location.href='/20170822/free_menu.php?page=1';
+				location.href='/board/team-/free_menu.php?page=1';
 				</script>";
 
 			  mysqli_close($conn);

@@ -14,13 +14,13 @@
   }
   function ajax_func()
   {
-    
+
     form = $("form")[0];
     formdata = new FormData(form);
     alert(formdata);
     $.ajax({
       type: "POST",
-      url: "/20170822/ajax.php",
+      url: "/board/team-/ajax.php",
       contentType: false,
       processData: false,
       data: formdata,
