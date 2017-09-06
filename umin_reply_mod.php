@@ -1,7 +1,13 @@
 
 <?php
 session_start();
-
+if(!$_SESSION['host'])
+{
+	echo "<script>alert('권한이 없습니다.');
+				location.href='free_menu.php';
+				</script>";
+				exit;
+}
 ?>
 <form method='POST' action='' align='right'>
 	<!--
@@ -27,11 +33,23 @@ else
 </form>
 <?php
 $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+if(!$conn)
+{
+	echo "DB접속에 실패 하였습니다.";
+	exit;
+}
   $board_no = $_POST['board_no'];
 //  print_r($board_no);
   $no = $_POST['no'];
   $sql = "SELECT * FROM reply WHERE no = {$no} AND board_name = 'board'";
   $result = mysqli_query($conn, $sql);
+	if(!$result)
+	{
+		echo "<script>alert('테이블에 데이터가 존재 하지 않습니다');
+		      location.href='javascript:history.back()';
+					</script>";
+					exit;
+	}
   $arr = mysqli_fetch_assoc($result);
 ?>
 <form method="POST" action="/20170822/umin_reply_mod_proc.php">
