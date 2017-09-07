@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
-  if($_POST['no'] == '' OR $_POST['writer'] == '' OR $_POST['content'] == '')
+  if($_POST['no'] == '' OR $_POST['writer'] == '' OR $_POST['content'] == '') 
   {
     echo "<script>alert('입력 값 이 없습니다.');
           location.href='javascript:history.back()';
