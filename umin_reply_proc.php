@@ -1,6 +1,27 @@
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
-  if($_POST['no'] == '' OR $_POST['writer'] == '' OR $_POST['content'] == '')
+session_start();
+$conn = @mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+if(!isset($_SESSION['host']))
+{
+	echo "<script>
+			alert('접근 권한이 없습니다.');
+			location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+}
+
+if(!$conn)
+{
+	echo "<script>
+		alert('데이터 베이스에 접속하지 못했습니다.');
+		location.href='/board/team-/free_menu.php';
+	</script>";
+exit;
+}
+
+
+
+  if(!isset($_POST['no']) or $_POST['no'] == '' OR $_POST['writer'] == '' OR $_POST['content'] == '')
   {
     echo "<script>alert('입력 값 이 없습니다.');
           location.href='javascript:history.back()';
