@@ -35,9 +35,17 @@ $no = $_POST['no'];
 $sql = "INSERT INTO sign(writer, subject, content, board_name, board_no) values('{$_SESSION['id']}', '{$subject}', '{$sign}', 'board', {$no})";
 $result = mysqli_query($conn, $sql);
 //print_r($sql);
+if(!$result)
+{
+  echo "<script>
+        alert('게시글 신고가 실패했습니다.');
+        location.href='/board/team-/umin_read.php?no={$_POST['no']}';
+        </script>";
+        exit;
+}
 
 
-$sql = "UPDATE boar SET sign = 1 where no = {$no}";
+$sql = "UPDATE board SET sign = 1 where no = {$no}";
 $result = mysqli_query($conn, $sql);
 
 //print_r($sql);
@@ -52,7 +60,7 @@ if($result)
 else
 {
   echo "<script>
-        alert('신고를 실패했습니다.');
+        alert('게시글 신고가 실패했습니다.');
         location.href='/board/team-/umin_write_sign.php?no={$_POST['no']}';
         </script>";
 
