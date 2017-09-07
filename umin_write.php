@@ -61,19 +61,30 @@ else
   $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
   $sql = 'SELECT * FROM user where admin = 1';
   $result = mysqli_query($conn, $sql);
-  $rows = mysqli_num_rows($result);
+  if($result)
+  {
+	$rows = mysqli_num_rows($result);
 	if($_SESSION['id'] == 'master')
 	{
-  	if($rows)
-  	{ echo "<th>등록일</th><td><input type='checkbox' name='check'>";
-    	echo "<select name='year'></select>";
-    	echo "<select name='month'></select>";
-    	echo "<select name='day'></select>";
-    	echo "<select name='hour'></select>";
-    	echo "<select name='min'></select></td>";
-  	}
+		if($rows)
+		{ echo "<th>등록일</th><td><input type='checkbox' name='check'>";
+			echo "<select name='year'></select>";
+			echo "<select name='month'></select>";
+			echo "<select name='day'></select>";
+			echo "<select name='hour'></select>";
+			echo "<select name='min'></select></td>";
+		}
 	}
-  mysqli_free_result($result);
+	mysqli_free_result($result);
+  }
+  else
+  {
+	 echo "<script>
+			alert('데이터를 가져오는데 실패했습니다.');
+			location.href='javascript:history.back()';
+			</script>";
+	exit; 
+  }
 
   ?>
   <tr>

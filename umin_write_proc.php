@@ -1,6 +1,17 @@
 <?php
 $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
 session_start();
+
+if(!isset($_SESSION['id']))
+{
+	echo "<script>
+		alert('접근 권한이 없습니다.');
+		location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+		
+}
+	
 if(isset($_POST['check']))
 {
   if($_POST['year'] != '' or $_POST['month'] != '' or
@@ -20,6 +31,7 @@ if(isset($_POST['check']))
      }
      $sql = "INSERT INTO reserve(writer,subject,content, upload, show_date) values('{$writer}','{$subject}','{$content}', '{$upload}', '{$data}')";
      $result = mysqli_query($conn,$sql);
+
      if($result)
      {
        if(is_uploaded_file($_FILES['ff']['tmp_name']))
@@ -75,6 +87,13 @@ if(isset($_POST['check']))
 
        //echo "글 작성에 실패했습니다.";
      }
+   }
+   else
+   {	   
+       echo "<script>alert('예약 설정이 실패 했습니다.');
+             location.href='javascript:history.back()';
+             </script>";
+	   
    }
 
 
@@ -166,7 +185,7 @@ exit;
 
 
   //  echo "글이 작성되었습니다.";
-}
+ }
   else
   {
     //mysqli_close($conn);

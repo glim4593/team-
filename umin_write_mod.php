@@ -1,5 +1,14 @@
 <?php
 session_start();
+$conn = @mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+if(!$conn)
+{
+	echo "<script>
+		alert('데이터 베이스에 접속하지 못했습니다.');
+		location.href='/board/team-/free_menu.php';
+	</script>";
+exit;
+}
 
 ?>
 <form method='POST' action='' align='right'>
@@ -18,6 +27,17 @@ if(!isset($_SESSION['host']))
 	exit;
 }
 
+$sql = "SELECT * from board where no = {$_GET['no']}";
+$result = mysqli_query($conn, $sql);
+$fetch = @mysqli_fetch_assoc($result);
+if($_SESSION['id'] != $fetch['writer'] and  $_SESSION['id'] != 'master')
+{
+	echo "<script>
+			alert('접근 권한이 없습니다.');
+			location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+}
 
 if($_SESSION['id'] != 'master')
 {
@@ -35,12 +55,21 @@ else
 	</div>
 </form>
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+
 //print_r($_POST);
 $no = $_GET['no'];
 $sql = "SELECT * FROM board WHERE no = {$no}";
 $result = mysqli_query($conn,$sql);
-$arr = mysqli_fetch_assoc($result);
+$arr = @mysqli_fetch_assoc($result);
+
+if(!$result)
+{
+	echo "<script>
+			alert('작성자의 정보를 불러오지 못했습니다.');
+			location.href='/board/team-/free_menu.php';
+			</script>";
+	exit;
+}
 ?>
 
 <form method="POST" enctype="multipart/form-data" action="/board/team-/umin_write_mod_proc.php">
