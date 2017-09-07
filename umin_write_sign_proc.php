@@ -1,5 +1,25 @@
 <?php
 session_start();
+$conn = @mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+if(!$conn)
+{
+	echo "<script>
+		alert('데이터 베이스에 접속하지 못했습니다.');
+		location.href='/board/team-/free_menu.php';
+	</script>";
+exit;
+}
+
+if(!isset($_SESSION['host']))
+{
+	echo "<script>
+			alert('접근 권한이 없습니다.');
+			location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+}
+
+
 if($_POST['sign'] == '' or $_POST['subject'] == '')
 {
   echo "<script>
@@ -8,7 +28,7 @@ if($_POST['sign'] == '' or $_POST['subject'] == '')
         </script>";
         exit;
 }
-$conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+
 $sign = mysqli_real_escape_string($conn, $_POST['sign']);
 $subject = mysqli_real_escape_string($conn, $_POST['subject']);
 $no = $_POST['no'];
@@ -17,7 +37,7 @@ $result = mysqli_query($conn, $sql);
 //print_r($sql);
 
 
-$sql = "UPDATE board SET sign = 1 where no = {$no}";
+$sql = "UPDATE boar SET sign = 1 where no = {$no}";
 $result = mysqli_query($conn, $sql);
 
 //print_r($sql);
