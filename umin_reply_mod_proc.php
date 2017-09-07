@@ -1,6 +1,18 @@
 <?php
-
+session_start();
+if(!$_SESSION['host'])
+{
+  echo "<script>alert('권한이 없습니다.');
+        location.href='/board/team-/free_menu.php';
+        </script>";
+        exit;
+}
 $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
+if(!$conn)
+{
+  echo "DB접속에 실패 하였습니다.";
+  exit;
+}
   $no = $_POST['no'];
   $board_no = $_POST['board_no'];
   //print_r($board_no);
@@ -40,7 +52,7 @@ $conn = mysqli_connect('127.0.0.1', 'root', '1234', 'umin');
   else
   {
 
-    echo "<script>alert('댓글 수정에 실패 했습니다.');
+    echo "<script>alert('테이블에 데이터가 없습니다.');
           location.href='/board/team-/umin_read.php?no={$board_no}';
           </script>";
       mysqli_close($conn);
