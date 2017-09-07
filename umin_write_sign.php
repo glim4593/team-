@@ -1,5 +1,24 @@
 <?php
 session_start();
+$conn = @mysqli_connect('127.0.0.1' , 'root', '1234', 'umin');
+if(!$conn)
+{
+	echo "<script>
+		alert('데이터 베이스에 접속하지 못했습니다.');
+		location.href='/board/team-/free_menu.php';
+	</script>";
+exit;
+}
+
+if(!isset($_SESSION['host']))
+{
+	echo "<script>
+			alert('접근 권한이 없습니다.');
+			location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+}
+
 ?>
 
 <head>
@@ -13,6 +32,7 @@ session_start();
 	<a href="/20170822/free_menu.php?cate=2page=1">게임</a>
 -->
 <?php
+
 if($_SESSION['id'] != 'master')
 {
 ?>
@@ -31,18 +51,37 @@ else
 <?php
 
 $no = $_GET['no'];
-$conn = mysqli_connect('127.0.0.1' , 'root', '1234', 'umin');
 
 $sql = "SELECT * FROM board where no = {$no}";
-$result = mysqli_query($conn, $sql);
+$result = @mysqli_query($conn, $sql);
 //print_r($sql);
-$rows = mysqli_num_rows($result);
-$arr = mysqli_fetch_assoc($result);
-  mysqli_free_result($result);
+$rows = @mysqli_num_rows($result);
+$arr = @mysqli_fetch_assoc($result);
+  @mysqli_free_result($result);
+
+if(!$result)
+{
+	echo "<script>
+			alert('데이터를 가져오지 못했습니다.');
+			location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+}
+
+
+if($_SESSION['id'] == $arr['writer'])
+{
+	echo "<script>
+			alert('작성자 본인의 글은 신고할 수 없습니다.');
+			location.href='/board/team-/free_menu.php';
+		</script>";
+	exit;
+}
+
 if($rows)
 {
  ?>
- <form method='POST' action='umin_write_sign_proc.php'>
+ <form method='POST' action='/board/team-/umin_write_sign_proc.php'>
  <table border='1' width="100%">
    <input type='hidden' name='no' value='<?=$arr['no']?>'>
  <tr>
