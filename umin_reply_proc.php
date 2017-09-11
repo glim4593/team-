@@ -33,6 +33,7 @@ exit;
 $no = $_POST['no'];
 $writer = mysqli_real_escape_string($conn,$_POST['writer']);
 $content = mysqli_real_escape_string($conn,$_POST['content']);
+//$content = htmlspecialchars($content); 
 
 for($i=0;$i<$count;$i++)
 {

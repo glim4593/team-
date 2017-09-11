@@ -14,7 +14,7 @@ if(!isset($_SESSION['host']))
 		</script>";
 	exit;
 }
-$no = $_GET['no'];
+$no = (int)mysqli_real_escape_string($conn, $_GET['no']);
 $sql = "SELECT * FROM board WHERE no = {$no}";
 $result = mysqli_query($conn,$sql);
 if(!$result)
